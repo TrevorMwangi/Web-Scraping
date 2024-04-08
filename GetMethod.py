@@ -1,6 +1,13 @@
+# import requests module
 import requests
 
-r = requests.get("https://api.github.com/users/TrevorMwangi")
-print(r)
+url = "https://www.formula1.com/en.html"
 
-print(r.content)
+try:
+    r = requests.get(url, timeout=1)
+    r.raise_for_status()
+except requests.exceptions.HTTPError as errh:
+    print("HTTP Error")
+    print(errh.args[0])
+
+print(r)
